@@ -1,0 +1,14 @@
+﻿@model IEnumerable<CarControl.Web.Models.CarViewModel>
+
+
+@{
+    ViewBag.Title = "Список подключенных устройств";
+}
+
+<h2>Список подключенных устройств</h2>
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_Details", item);
+}
+

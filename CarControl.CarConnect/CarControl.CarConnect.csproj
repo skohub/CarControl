@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FDB09674-3C2D-4A1B-B8AB-2C367BD83EDC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarControl.CarConnect</RootNamespace>
+    <AssemblyName>CarControl.CarConnect</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\CommandModeCommand.cs" />
+    <Compile Include="Commands\GpsCommand.cs" />
+    <Compile Include="Commands\GSensorCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\SmsCommitCommand.cs" />
+    <Compile Include="Commands\SmsOutCommand.cs" />
+    <Compile Include="Commands\SmsInCommand.cs" />
+    <Compile Include="Commands\SpeedCommand.cs" />
+    <Compile Include="Commands\Temp1Command.cs" />
+    <Compile Include="Commands\TextCommandFactory.cs" />
+    <Compile Include="Commands\VoltageCommand.cs" />
+    <Compile Include="Protocol\BaseBinaryProtocol.cs" />
+    <Compile Include="Protocol\BaseTextProto.cs" />
+    <Compile Include="Protocol\TextAuthProto.cs" />
+    <Compile Include="Server\AsyncCarClientToken.cs" />
+    <Compile Include="Protocol\BinaryAuthProto.cs" />
+    <Compile Include="Protocol\BaseCarProtocol.cs" />
+    <Compile Include="Protocol\ICarProtocol.cs" />
+    <Compile Include="Server\ICarProtoServer.cs" />
+    <Compile Include="Server\ITcpConnection.cs" />
+    <Compile Include="Protocol\BinaryProto.cs" />
+    <Compile Include="Server\CarProtoServer.cs" />
+    <Compile Include="Disposable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\TcpServer.cs" />
+    <Compile Include="Protocol\TextProto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarConnect.Model\CarConnect.Model.csproj">
+      <Project>{019F7905-21E2-4234-A239-4CF5F521EE3E}</Project>
+      <Name>CarConnect.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarControl.Contract\CarControl.Contract.csproj">
+      <Project>{205FF8B9-E412-4A8A-9F7C-A8B0B224591F}</Project>
+      <Name>CarControl.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

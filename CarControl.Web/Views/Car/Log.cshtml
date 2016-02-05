@@ -1,0 +1,14 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "История команд";
+}
+
+<h2>История команд</h2>
+
+<pre>
+    @foreach (var l in Model)
+    {
+        @(l + "\r\n");
+    }
+</pre>
