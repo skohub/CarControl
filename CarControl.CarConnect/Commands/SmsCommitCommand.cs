@@ -7,7 +7,7 @@ using CarControl.Contract;
 
 namespace CarControl.CarConnect.Commands
 {
-    public class SmsCommitCommand : ICommand
+    public class SmsCommitCommand : IInputCommand
     {
         private readonly ISmsService _smsService;
 
@@ -16,10 +16,9 @@ namespace CarControl.CarConnect.Commands
             _smsService = smsService;
         }
 
-        public bool Execute()
+        public void Execute()
         {
             _smsService.Commit();
-            return true;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace CarControl.CarConnect.Protocol
         public override void CommandReceived(byte[] bufBytes)
         {
             Assert(bufBytes.Length > 1, "Received data length must be > 1");
-            ICommand command = null;
+            IInputCommand command = null;
             switch (bufBytes[0])
             {
                 case CommandMode:

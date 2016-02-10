@@ -63,6 +63,7 @@ namespace CarControl.CarConnect.Protocol
         protected void Assert(bool condition, string message, bool closeConnection = false)
         {
             if (condition) return;
+            Send("COMMANDFAIL");
             Send(message);
             if (closeConnection) Connection.Close();
             throw new InvalidOperationException();

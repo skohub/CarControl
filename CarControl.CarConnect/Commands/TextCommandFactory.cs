@@ -6,15 +6,15 @@ namespace CarControl.CarConnect.Commands
 {
     public interface ICommandFactory
     {
-        ICommand CreateCommandMode(ICarProtocol carProtocol, string parameter);
-        ICommand CreateTemp1(int carId, float temperature, DateTime time);
-        ICommand CreateVoltage(int carId, float voltage, DateTime time);
-        ICommand CreateGSensor(int carId, int x, int y, int z, DateTime time);
-        ICommand CreateGps(int carId, double latitude, double longitude, DateTime time);
-        ICommand CreateSmsIn(int carId, string text, DateTime time);
-        ICommand CreateSmsOut(int carId, string text, DateTime time);
-        ICommand CreateSpeed(int carId, int speed, DateTime time);
-        ICommand CreateSmsCommit();
+        IInputCommand CreateCommandMode(ICarProtocol carProtocol, string parameter);
+        IInputCommand CreateTemp1(int carId, float temperature, DateTime time);
+        IInputCommand CreateVoltage(int carId, float voltage, DateTime time);
+        IInputCommand CreateGSensor(int carId, int x, int y, int z, DateTime time);
+        IInputCommand CreateGps(int carId, double latitude, double longitude, DateTime time);
+        IInputCommand CreateSmsIn(int carId, string text, DateTime time);
+        IInputCommand CreateSmsOut(int carId, string text, DateTime time);
+        IInputCommand CreateSpeed(int carId, int speed, DateTime time);
+        IInputCommand CreateSmsCommit();
     }
 
     public class TextCommandFactory : ICommandFactory
@@ -30,47 +30,47 @@ namespace CarControl.CarConnect.Commands
             SensorService = sensorService;
         }
 
-        public ICommand CreateCommandMode(ICarProtocol carProtocol, string parameter)
+        public IInputCommand CreateCommandMode(ICarProtocol carProtocol, string parameter)
         {
             return new CommandModeCommand(carProtocol, parameter);
         }
 
-        public ICommand CreateTemp1(int carId, float temperature, DateTime time)
+        public IInputCommand CreateTemp1(int carId, float temperature, DateTime time)
         {
             return new Temp1Command(SensorService, carId, temperature, time);
         }
 
-        public ICommand CreateVoltage(int carId, float voltage, DateTime time)
+        public IInputCommand CreateVoltage(int carId, float voltage, DateTime time)
         {
             return new VoltageCommand(SensorService, carId, voltage, time);
         }
 
-        public ICommand CreateGSensor(int carId, int x, int y, int z, DateTime time)
+        public IInputCommand CreateGSensor(int carId, int x, int y, int z, DateTime time)
         {
             return new GSensorCommand(carId, SensorService, x, y, z, time);
         }
 
-        public ICommand CreateGps(int carId, double latitude, double longitude, DateTime time)
+        public IInputCommand CreateGps(int carId, double latitude, double longitude, DateTime time)
         {
             return new GpsCommand(carId, SensorService, latitude, longitude, time);
         }
 
-        public ICommand CreateSmsIn(int carId, string text, DateTime time)
+        public IInputCommand CreateSmsIn(int carId, string text, DateTime time)
         {
             return new SmsInCommand(_smsService, carId, text, time);
         }
 
-        public ICommand CreateSmsOut(int carId, string text, DateTime time)
+        public IInputCommand CreateSmsOut(int carId, string text, DateTime time)
         {
             return new SmsOutCommand(_smsService, carId, text, time);
         }
 
-        public ICommand CreateSpeed(int carId, int speed, DateTime time)
+        public IInputCommand CreateSpeed(int carId, int speed, DateTime time)
         {
             return new SpeedCommand(SensorService, carId, speed, time);
         }
 
-        public ICommand CreateSmsCommit()
+        public IInputCommand CreateSmsCommit()
         {
             return new SmsCommitCommand(_smsService);
         }

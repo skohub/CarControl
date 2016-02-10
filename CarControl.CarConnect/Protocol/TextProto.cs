@@ -32,7 +32,7 @@ namespace CarControl.CarConnect.Protocol
             if (text.Length < 1) return;
             var cmd = text.Split(':');
             var action = cmd[0];
-            ICommand command = null;
+            IInputCommand command = null;
             switch (action)
             {
                 case "COMMANDMODE":
@@ -83,7 +83,7 @@ namespace CarControl.CarConnect.Protocol
             }
             if (command != null)
             {
-                Send(command.Execute() ? "COMMANDOK" : "COMMANDFAIL");
+                Send("COMMANDOK");
             }
             else
             {

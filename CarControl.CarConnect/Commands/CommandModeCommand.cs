@@ -2,7 +2,7 @@
 
 namespace CarControl.CarConnect.Commands
 {
-    public class CommandModeCommand : ICommand
+    public class CommandModeCommand : IInputCommand
     {
         private readonly ICarProtocol _carProtocol;
         private readonly string _parameter;
@@ -13,21 +13,21 @@ namespace CarControl.CarConnect.Commands
             _parameter = parameter;
         }
 
-        public bool Execute()
+        public void Execute()
         {
             switch (_parameter)
             {
                 case "BINARY":
                     _carProtocol.Send("SET BINARY PROTOCOL");
                     _carProtocol.SetProtocol(new BinaryProto());
-                    return true;
+                    break;
                 case "TEXT":
                     _carProtocol.Send("SET TEXT PROTOCOL");
                     _carProtocol.SetProtocol(new TextProto());
-                    return true;
+                    break;
                 default:
                     _carProtocol.Send("PROTOCOL NOT FOUND");
-                    return false;
+                    break;
             }
         }
     }

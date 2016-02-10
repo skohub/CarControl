@@ -4,7 +4,7 @@ using CarControl.Contract;
 
 namespace CarControl.CarConnect.Commands
 {
-    public class GSensorCommand : ICommand
+    public class GSensorCommand : IInputCommand
     {
         private readonly int _carId;
         private readonly ISensorService _sensorService;
@@ -23,11 +23,10 @@ namespace CarControl.CarConnect.Commands
             _time = time;
         }
 
-        public bool Execute()
+        public void Execute()
         {
             var gsensor = new GSensor() {CarId = _carId, X = _x, Y = _y, Z = _z, Time = _time };
             _sensorService.RegisterGSensor(gsensor);
-            return true;
         }
     }
 }

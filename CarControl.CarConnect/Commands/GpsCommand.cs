@@ -4,7 +4,7 @@ using CarControl.Contract;
 
 namespace CarControl.CarConnect.Commands
 {
-    public class GpsCommand : ICommand
+    public class GpsCommand : IInputCommand
     {
         private readonly int _carId;
         private readonly ISensorService _sensorService;
@@ -22,7 +22,7 @@ namespace CarControl.CarConnect.Commands
             _time = time;
         }
 
-        public bool Execute()
+        public void Execute()
         {
             var location = new GpsLocation
             {
@@ -32,7 +32,6 @@ namespace CarControl.CarConnect.Commands
                 Time = _time
             };
             _sensorService.RegisterLocation(location);
-            return true;
         }
     }
 }

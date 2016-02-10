@@ -2,8 +2,8 @@
 
 namespace CarControl.CarConnect.Commands
 {
-    public interface ICommand
+    public interface IInputCommand
     {
-        bool Execute();
+        void Execute();
     }
 }

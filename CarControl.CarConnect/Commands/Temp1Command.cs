@@ -4,7 +4,7 @@ using CarControl.Contract;
 
 namespace CarControl.CarConnect.Commands
 {
-    public class Temp1Command : ICommand
+    public class Temp1Command : IInputCommand
     {
         private readonly ISensorService _sensorService;
         private readonly int _carId;
@@ -19,11 +19,10 @@ namespace CarControl.CarConnect.Commands
             _time = time;
         }
 
-        public bool Execute()
+        public void Execute()
         {
             var value = new FloatSensorValue {SensorName = "TEMP1", CarId = _carId, Time = _time, Value = _temperature};
             _sensorService.RegisterValue(value);
-            return true;
         }
     }
 }

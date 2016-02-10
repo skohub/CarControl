@@ -4,7 +4,7 @@ using CarControl.Contract;
 
 namespace CarControl.CarConnect.Commands
 {
-    public class SmsInCommand : ICommand
+    public class SmsInCommand : IInputCommand
     {
         private readonly ISmsService _smsService;
         private readonly int _carId;
@@ -19,11 +19,10 @@ namespace CarControl.CarConnect.Commands
             _time = time;
         }
 
-        public bool Execute()
+        public void Execute()
         {
             var sms = new Sms {Direction = "IN", CarId = _carId, Text = _text, Time = _time};
             _smsService.CreateSms(sms);
-            return true;
         }
     }
 }

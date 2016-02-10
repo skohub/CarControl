@@ -47,7 +47,7 @@
     <Compile Include="Commands\CommandModeCommand.cs" />
     <Compile Include="Commands\GpsCommand.cs" />
     <Compile Include="Commands\GSensorCommand.cs" />
-    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\IInputCommand.cs" />
     <Compile Include="Commands\SmsCommitCommand.cs" />
     <Compile Include="Commands\SmsOutCommand.cs" />
     <Compile Include="Commands\SmsInCommand.cs" />
