@@ -3,6 +3,7 @@ using CarConnect.Data.Infrastructure;
 using CarConnect.Data.Repositories;
 using CarControl.CarConnect.Commands;
 using CarControl.CarConnect.Server;
+using CarControl.Contract;
 using CarControl.Service;
 
 namespace CarControl.ConsoleHost
@@ -28,11 +29,11 @@ namespace CarControl.ConsoleHost
                 .AsImplementedInterfaces().InstancePerLifetimeScope();//.InstancePerRequest();
 
             builder.RegisterType<TextCommandFactory>().As<ICommandFactory>().InstancePerLifetimeScope();
-            //builder.RegisterType<CarProtoServer>().As<ICarProtoServer>()
-            //    .SingleInstance()
-            //    .AutoActivate();
+            builder.RegisterType<CarProtoServer>().As<ICarProtoServer>()
+                .SingleInstance()
+                .AutoActivate();
+            builder.RegisterType<CarCommand>();
 
-            builder.RegisterType<CarService>();
             return builder;
         }
     }

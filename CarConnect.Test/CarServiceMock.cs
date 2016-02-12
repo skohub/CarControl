@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CarConnect.Model;
-using CarControl.Contract;
+using CarControl.Service;
 
 namespace CarConnect.Test
 {

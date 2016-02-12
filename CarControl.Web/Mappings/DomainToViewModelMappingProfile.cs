@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using CarConnect.Model;
-using CarControl.CarConnect.Protocol;
 using CarControl.Web.Models;
 
 namespace CarControl.Web.Mappings
@@ -11,8 +9,8 @@ namespace CarControl.Web.Mappings
 
         protected override void Configure()
         {
-            Mapper.CreateMap<Car, CarViewModel>();
-            Mapper.CreateMap<ICarProtocol, CarViewModel>();
+            //Mapper.CreateMap<Car, CarViewModel>();
+            //Mapper.CreateMap<ICarProtocol, CarViewModel>();
         }
     }
 }

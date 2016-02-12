@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
-using CarControl.CarConnect.Protocol;
-using CarControl.CarConnect.Server;
 using CarControl.Contract;
 using CarControl.Web.Models;
 using NLog;
@@ -14,22 +12,24 @@ namespace CarControl.Web.Controllers
 {
     public class CarController : Controller
     {
-        private readonly ICarService _carService;
-        private readonly ICarProtoServer _srv;
+        private readonly ICarCommand _carCommand;
 
-        public CarController(ICarProtoServer srv, ICarService carService)
+        public CarController(ICarCommand carCommand)
         {
-            _srv = srv;
-            _carService = carService;
+            _carCommand = carCommand;
         }
 
         // GET: Car
         public ActionResult Index()
         {
             if (!User.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
-            var cars = _srv.GetConnections();
-            //var cars = _carService.GetCars();
-            var viewModelCars = Mapper.Map<IEnumerable<ICarProtocol>, IEnumerable<CarViewModel>>(cars);
+            var connections = _carCommand.ConnectionList();
+            var viewModelCars = new List<CarViewModel>();
+            foreach (var i in connections)
+            {
+                viewModelCars.Add(new CarViewModel {Id = i});
+            }
+            //var viewModelCars = Mapper.Map<IEnumerable<ICarProtocol>, IEnumerable<CarViewModel>>(cars);
             return View(viewModelCars);
         }
 
@@ -44,8 +44,7 @@ namespace CarControl.Web.Controllers
         public ActionResult Ping(int id)
         {
             if (!User.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
-            var car = _srv.GetConnection(id);
-            car.Send("PING");
+            _carCommand.Ping(1);
             return View();
         }
     }

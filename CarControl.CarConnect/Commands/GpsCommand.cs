@@ -1,6 +1,6 @@
 ﻿using System;
 using CarConnect.Model;
-using CarControl.Contract;
+using CarControl.Service;
 
 namespace CarControl.CarConnect.Commands
 {

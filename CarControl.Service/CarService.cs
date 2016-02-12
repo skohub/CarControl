@@ -2,10 +2,18 @@
 using CarConnect.Data.Infrastructure;
 using CarConnect.Data.Repositories;
 using CarConnect.Model;
-using CarControl.Contract;
 
 namespace CarControl.Service
 {
+    public interface ICarService
+    {
+        IEnumerable<Car> GetCars();
+        Car GetCar(int id);
+        Car GetCarByImei(string imei);
+        void CreateCar(Car car);
+        void SaveCar();
+    }
+
     public class CarService : ICarService
     {
         private readonly ICarRepository _carRepository;

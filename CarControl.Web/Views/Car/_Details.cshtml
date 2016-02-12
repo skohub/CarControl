@@ -4,11 +4,8 @@
     <h4>CarViewModel</h4>
     <h4>Id: @Model.Id</h4>
     <h4>Name: @Model.Name</h4>
+    <p>@Html.ActionLink("Пинг", "Ping", new { id = Model.Id })</p>
     <hr />
     <dl class="dl-horizontal">
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Пинг", "Ping", new { id = Model.Id }) |
-    @Html.ActionLink("Вернуться к списку подключений", "Index")
-</p>

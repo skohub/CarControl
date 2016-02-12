@@ -2,7 +2,7 @@
 using System.Net;
 using CarControl.CarConnect.Commands;
 using CarControl.CarConnect.Protocol;
-using CarControl.Contract;
+using CarControl.Service;
 
 namespace CarControl.CarConnect.Server
 {

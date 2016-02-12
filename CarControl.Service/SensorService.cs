@@ -1,10 +1,16 @@
 ﻿using CarConnect.Data.Infrastructure;
 using CarConnect.Data.Repositories;
 using CarConnect.Model;
-using CarControl.Contract;
 
 namespace CarControl.Service
 {
+    public interface ISensorService
+    {
+        void RegisterValue(FloatSensorValue sensor);
+        void RegisterLocation(GpsLocation location);
+        void RegisterGSensor(GSensor gsensor);
+    }
+
     public class SensorService : ISensorService
     {
         private readonly IFloatSensorRepository _floatSensorRepository;

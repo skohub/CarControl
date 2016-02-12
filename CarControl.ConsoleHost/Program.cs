@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using Autofac.Integration.Wcf;
@@ -17,9 +15,9 @@ namespace CarControl.ConsoleHost
             using (var container = builder.Build())
             {
                 var address = new Uri("http://localhost:4998");
-                var host = new ServiceHost(typeof(CarService), address);
-                host.AddServiceEndpoint(typeof(ICarService), new BasicHttpBinding(), string.Empty);
-                host.AddDependencyInjectionBehavior<ICarService>(container);
+                var host = new ServiceHost(typeof(CarCommand), address);
+                host.AddServiceEndpoint(typeof(ICarCommand), new WSDualHttpBinding(), string.Empty);
+                host.AddDependencyInjectionBehavior<CarCommand>(container);
                 host.Description.Behaviors.Add(new ServiceMetadataBehavior { HttpGetEnabled = true, HttpGetUrl = address });
                 host.Open();
 

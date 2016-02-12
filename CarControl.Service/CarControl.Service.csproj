@@ -54,10 +54,6 @@
       <Project>{019f7905-21e2-4234-a239-4cf5f521ee3e}</Project>
       <Name>CarConnect.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarControl.Contract\CarControl.Contract.csproj">
-      <Project>{205FF8B9-E412-4A8A-9F7C-A8B0B224591F}</Project>
-      <Name>CarControl.Contract</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

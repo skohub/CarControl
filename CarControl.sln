@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.Contract", "CarC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.ConsoleHost", "CarControl.ConsoleHost\CarControl.ConsoleHost.csproj", "{A7BD4510-B8C7-43C5-A88F-4E2E5EEED54E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.TestWcfClient", "CarControl.TestWcfClient\CarControl.TestWcfClient.csproj", "{7FAEBD64-44A0-47BC-95B3-23A1FBF67775}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,10 +57,6 @@ Global
 		{A7BD4510-B8C7-43C5-A88F-4E2E5EEED54E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7BD4510-B8C7-43C5-A88F-4E2E5EEED54E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7BD4510-B8C7-43C5-A88F-4E2E5EEED54E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FAEBD64-44A0-47BC-95B3-23A1FBF67775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FAEBD64-44A0-47BC-95B3-23A1FBF67775}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FAEBD64-44A0-47BC-95B3-23A1FBF67775}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FAEBD64-44A0-47BC-95B3-23A1FBF67775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

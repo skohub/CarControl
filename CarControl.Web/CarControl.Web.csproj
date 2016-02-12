@@ -85,6 +85,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -217,6 +218,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WcfProxy\CarCommandCallback.cs" />
+    <Compile Include="WcfProxy\CarCommandProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -302,25 +305,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarConnect.Data\CarConnect.Data.csproj">
-      <Project>{093eb620-6a61-4aa4-8f44-6851e860a319}</Project>
-      <Name>CarConnect.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarConnect.Model\CarConnect.Model.csproj">
-      <Project>{019F7905-21E2-4234-A239-4CF5F521EE3E}</Project>
-      <Name>CarConnect.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarControl.CarConnect\CarControl.CarConnect.csproj">
-      <Project>{fdb09674-3c2d-4a1b-b8ab-2c367bd83edc}</Project>
-      <Name>CarControl.CarConnect</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CarControl.Contract\CarControl.Contract.csproj">
-      <Project>{205FF8B9-E412-4A8A-9F7C-A8B0B224591F}</Project>
+      <Project>{205ff8b9-e412-4a8a-9f7c-a8b0b224591f}</Project>
       <Name>CarControl.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarControl.Service\CarControl.Service.csproj">
-      <Project>{AB8F253F-BAFD-4489-B420-DA0DB731C329}</Project>
-      <Name>CarControl.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

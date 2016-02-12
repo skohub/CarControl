@@ -41,9 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICarService.cs" />
-    <Compile Include="ISensorService.cs" />
-    <Compile Include="ISmsService.cs" />
+    <Compile Include="ICarCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

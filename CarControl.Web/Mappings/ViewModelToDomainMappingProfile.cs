@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
-using CarConnect.Model;
+﻿using AutoMapper;
 using CarControl.Web.Models;
 
 namespace CarControl.Web.Mappings
@@ -14,7 +9,7 @@ namespace CarControl.Web.Mappings
 
         protected override void Configure()
         {
-            Mapper.CreateMap<CarViewModel, Car>();
+            //Mapper.CreateMap<CarViewModel, Car>();
         }
     }
 }

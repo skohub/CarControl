@@ -80,6 +80,10 @@
       <Project>{205FF8B9-E412-4A8A-9F7C-A8B0B224591F}</Project>
       <Name>CarControl.Contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CarControl.Service\CarControl.Service.csproj">
+      <Project>{ab8f253f-bafd-4489-b420-da0db731c329}</Project>
+      <Name>CarControl.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

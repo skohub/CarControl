@@ -1,10 +1,15 @@
 ﻿using CarConnect.Data.Infrastructure;
 using CarConnect.Data.Repositories;
 using CarConnect.Model;
-using CarControl.Contract;
 
 namespace CarControl.Service
 {
+    public interface ISmsService
+    {
+        void CreateSms(Sms sms);
+        void Commit();
+    }
+
     public class SmsService : ISmsService
     {
         private readonly IUnitOfWork _unitOfWork;
