@@ -61,3 +61,4 @@ TestResults
 logs
 CarControl.Web/ConnectionStrings.config
 CarControl.ConsoleHost/ConnectionStrings.config
+CarControl.WcfService/ConnectionStrings.config
