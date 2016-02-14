@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using CarConnect.Data.Infrastructure;
 using CarConnect.Data.Repositories;
-using CarControl.CarConnect.Commands;
+using CarControl.CarConnect.InCommands;
 using CarControl.CarConnect.Server;
 using CarControl.Contract;
 using CarControl.Service;
@@ -28,7 +28,7 @@ namespace CarControl.ConsoleHost
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerLifetimeScope();//.InstancePerRequest();
 
-            builder.RegisterType<TextCommandFactory>().As<ICommandFactory>().InstancePerLifetimeScope();
+            builder.RegisterType<InCommandFactory>().As<ICommandFactory>().InstancePerLifetimeScope();
             builder.RegisterType<CarProtoServer>().As<ICarProtoServer>()
                 .SingleInstance()
                 .AutoActivate();

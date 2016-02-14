@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using CarControl.CarConnect.Commands;
+using CarControl.CarConnect.InCommands;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CarControl.CarConnect.Protocol;
 
@@ -15,7 +15,7 @@ namespace CarConnect.Test
         {
             var tcpConnectionMock = new TcpConnectionMock();
             var carServiceMock = new CarServiceMock();
-            var commandFactory = new TextCommandFactory(carServiceMock, new SensorServiceMock(), new SmsServiceMock());
+            var commandFactory = new InCommandFactory(carServiceMock, new SensorServiceMock(), new SmsServiceMock());
             var authProto = new TextAuthProto(tcpConnectionMock, commandFactory, 1, 1, carServiceMock);
             authProto.Receive(Encoding.UTF8.GetBytes("123456789012345:123\r\n"));
             var expect = Encoding.UTF8.GetBytes("LOGINOK\r\n");
@@ -30,7 +30,7 @@ namespace CarConnect.Test
         {
             var tcpConnectionMock = new TcpConnectionMock();
             var carServiceMock = new CarServiceMock();
-            var commandFactory = new TextCommandFactory(carServiceMock, new SensorServiceMock(), new SmsServiceMock());
+            var commandFactory = new InCommandFactory(carServiceMock, new SensorServiceMock(), new SmsServiceMock());
             var authProto = new TextAuthProto(tcpConnectionMock, commandFactory, 1, 1, new CarServiceMock());
             authProto.Receive(Encoding.UTF8.GetBytes("123456789012345:12\r\n"));
             var expect = Encoding.UTF8.GetBytes("LOGINFAIL\r\n");

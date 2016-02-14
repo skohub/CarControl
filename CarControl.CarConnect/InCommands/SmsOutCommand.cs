@@ -2,9 +2,9 @@
 using CarConnect.Model;
 using CarControl.Service;
 
-namespace CarControl.CarConnect.Commands
+namespace CarControl.CarConnect.InCommands
 {
-    public class SmsOutCommand : IInputCommand
+    public class SmsOutCommand : IInCommand
     {
         private readonly ISmsService _smsService;
         private readonly int _carId;

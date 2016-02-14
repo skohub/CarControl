@@ -1,7 +1,7 @@
 ﻿using CarControl.CarConnect.Server;
 using System;
 using System.Globalization;
-using CarControl.CarConnect.Commands;
+using CarControl.CarConnect.InCommands;
 using NLog;
 
 namespace CarControl.CarConnect.Protocol
@@ -32,13 +32,9 @@ namespace CarControl.CarConnect.Protocol
             if (text.Length < 1) return;
             var cmd = text.Split(':');
             var action = cmd[0];
-            IInputCommand command = null;
+            IInCommand command = null;
             switch (action)
             {
-                case "COMMANDMODE":
-                    Assert(cmd.Length == 2, "COMMANDMODE awaits 1 param");
-                    command = CommandFactory.CreateCommandMode(this, cmd[1]);
-                    break;
                 case "T1":
                     Assert(cmd.Length == 3, "T1 awaits 2 param");
                     int temperatureInt;

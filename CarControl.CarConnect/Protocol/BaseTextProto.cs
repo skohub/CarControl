@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using CarControl.CarConnect.Commands;
+using CarControl.CarConnect.InCommands;
 using CarControl.CarConnect.Server;
 
 namespace CarControl.CarConnect.Protocol

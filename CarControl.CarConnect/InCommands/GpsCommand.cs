@@ -2,9 +2,9 @@
 using CarConnect.Model;
 using CarControl.Service;
 
-namespace CarControl.CarConnect.Commands
+namespace CarControl.CarConnect.InCommands
 {
-    public class GpsCommand : IInputCommand
+    public class GpsCommand : IInCommand
     {
         private readonly int _carId;
         private readonly ISensorService _sensorService;

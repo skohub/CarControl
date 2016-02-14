@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net;
-using CarControl.CarConnect.Commands;
+using CarControl.CarConnect.InCommands;
 using CarControl.CarConnect.Protocol;
 using CarControl.Service;
 
