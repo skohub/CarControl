@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using CarControl.CarConnect.Protocol;
 using CarControl.CarConnect.Server;
 using CarControl.Contract;
 

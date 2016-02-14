@@ -1,7 +1,8 @@
 ﻿using CarControl.CarConnect.Server;
 using System;
 using System.Globalization;
-using CarControl.CarConnect.InCommands;
+using CarControl.CarConnect.CommandsCommon;
+using CarControl.CarConnect.InputCommands;
 using NLog;
 
 namespace CarControl.CarConnect.Protocol
@@ -32,7 +33,7 @@ namespace CarControl.CarConnect.Protocol
             if (text.Length < 1) return;
             var cmd = text.Split(':');
             var action = cmd[0];
-            IInCommand command = null;
+            IInputCommand command = null;
             switch (action)
             {
                 case "T1":
@@ -79,13 +80,13 @@ namespace CarControl.CarConnect.Protocol
             }
             if (command != null)
             {
+                command.Execute();
                 Send("COMMANDOK");
             }
             else
             {
                 Send("COMMAND NOT FOUND");
             }
-                
         }
     }
 }

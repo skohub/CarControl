@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
-using CarControl.CarConnect.InCommands;
+using CarControl.CarConnect.CommandsCommon;
+using CarControl.CarConnect.InputCommands;
 using CarControl.CarConnect.Server;
 
 namespace CarControl.CarConnect.Protocol
@@ -25,17 +26,17 @@ namespace CarControl.CarConnect.Protocol
                     case 13:
                         break;
                     case 10:
-                        try
+                        //try
                         {
                             CommandReceived(_cmd.ToString());
                         }
-                        catch (InvalidOperationException)
-                        {
-                        }
-                        catch (Exception e)
-                        {
-                            Send(e.GetType().Name);
-                        }
+                        //catch (InvalidOperationException)
+                        //{
+                        //}
+                        //catch (Exception e)
+                        //{
+                        //    Send(e.GetType().Name);
+                        //}
                         _cmd.Clear();
                         break;
                     default:

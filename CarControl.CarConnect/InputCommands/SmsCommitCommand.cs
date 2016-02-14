@@ -1,8 +1,9 @@
-﻿using CarControl.Service;
+﻿using CarControl.CarConnect.CommandsCommon;
+using CarControl.Service;
 
-namespace CarControl.CarConnect.InCommands
+namespace CarControl.CarConnect.InputCommands
 {
-    public class SmsCommitCommand : IInCommand
+    public class SmsCommitCommand : IInputCommand
     {
         private readonly ISmsService _smsService;
 

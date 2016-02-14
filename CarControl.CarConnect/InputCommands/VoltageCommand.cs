@@ -1,27 +1,28 @@
 ﻿using System;
 using CarConnect.Model;
+using CarControl.CarConnect.CommandsCommon;
 using CarControl.Service;
 
-namespace CarControl.CarConnect.InCommands
+namespace CarControl.CarConnect.InputCommands
 {
-    public class Temp1Command : IInCommand
+    public class VoltageCommand : IInputCommand
     {
         private readonly ISensorService _sensorService;
         private readonly int _carId;
-        private readonly float _temperature;
+        private readonly float _voltage;
         private readonly DateTime _time;
 
-        public Temp1Command(ISensorService sensorService, int carId, float temperature, DateTime time)
+        public VoltageCommand(ISensorService sensorService, int carId, float voltage, DateTime time)
         {
             _sensorService = sensorService;
             _carId = carId;
-            _temperature = temperature;
+            _voltage = voltage;
             _time = time;
         }
 
         public void Execute()
         {
-            var value = new FloatSensorValue {SensorName = "TEMP1", CarId = _carId, Time = _time, Value = _temperature};
+            var value = new FloatSensorValue {SensorName = "VOLTAGE", CarId = _carId, Value = _voltage, Time = _time};
             _sensorService.RegisterValue(value);
         }
     }

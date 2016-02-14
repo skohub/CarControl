@@ -1,10 +1,11 @@
 ﻿using System;
 using CarConnect.Model;
+using CarControl.CarConnect.CommandsCommon;
 using CarControl.Service;
 
-namespace CarControl.CarConnect.InCommands
+namespace CarControl.CarConnect.InputCommands
 {
-    public class SpeedCommand : IInCommand
+    public class SpeedCommand : IInputCommand
     {
         private readonly ISensorService _sensorService;
         private readonly int _carId;

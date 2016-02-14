@@ -44,25 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InCommands\GpsCommand.cs" />
-    <Compile Include="InCommands\GSensorCommand.cs" />
-    <Compile Include="InCommands\IInCommand.cs" />
-    <Compile Include="InCommands\SmsCommitCommand.cs" />
-    <Compile Include="InCommands\SmsOutCommand.cs" />
-    <Compile Include="InCommands\SmsInCommand.cs" />
-    <Compile Include="InCommands\SpeedCommand.cs" />
-    <Compile Include="InCommands\Temp1Command.cs" />
-    <Compile Include="InCommands\InCommandFactory.cs" />
-    <Compile Include="InCommands\VoltageCommand.cs" />
-    <Compile Include="OutCommands\IOutCommand.cs" />
+    <Compile Include="InputCommands\GpsCommand.cs" />
+    <Compile Include="InputCommands\GSensorCommand.cs" />
+    <Compile Include="CommandsCommon\IInputCommand.cs" />
+    <Compile Include="InputCommands\SmsCommitCommand.cs" />
+    <Compile Include="InputCommands\SmsOutCommand.cs" />
+    <Compile Include="InputCommands\SmsInCommand.cs" />
+    <Compile Include="InputCommands\SpeedCommand.cs" />
+    <Compile Include="InputCommands\Temp1Command.cs" />
+    <Compile Include="CommandsCommon\InputCommandFactory.cs" />
+    <Compile Include="InputCommands\VoltageCommand.cs" />
+    <Compile Include="CommandsCommon\IOutputCommand.cs" />
     <Compile Include="Protocol\BaseTextProto.cs" />
     <Compile Include="Protocol\TextAuthProto.cs" />
     <Compile Include="Server\AsyncCarClientToken.cs" />
     <Compile Include="Protocol\BaseCarProtocol.cs" />
     <Compile Include="Protocol\ICarProtocol.cs" />
-    <Compile Include="Server\ICarProtoServer.cs" />
+    <Compile Include="Protocol\ICarProtoServer.cs" />
     <Compile Include="Server\ITcpConnection.cs" />
-    <Compile Include="Server\CarProtoServer.cs" />
+    <Compile Include="Protocol\CarProtoServer.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\TcpServer.cs" />
@@ -84,6 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="OutputCommands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

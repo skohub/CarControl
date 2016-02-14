@@ -1,23 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
-using CarControl.CarConnect.InCommands;
-using CarControl.CarConnect.Protocol;
+using CarControl.CarConnect.CommandsCommon;
+using CarControl.CarConnect.Server;
 using CarControl.Service;
 
-namespace CarControl.CarConnect.Server
+namespace CarControl.CarConnect.Protocol
 {
     public class CarProtoServer: Disposable, ICarProtoServer
     {
-        private readonly ICommandFactory _commandFactory;
         private readonly ICarService _carService;
         private readonly TcpServer _tcpServer;
         private int _nextId = 1;
         private readonly List<ICarProtocol> _cars = new List<ICarProtocol>();
+        public Func<ICommandFactory> GetInputCommandFactory { get; set; }
+        public Action OnClientDisconnected { get; set; }
 
-        public CarProtoServer(ICarService carService, ICommandFactory commandFactory)
+        public CarProtoServer(ICarService carService)
         {
             _carService = carService;
-            _commandFactory = commandFactory;
             _tcpServer = new TcpServer(255);
             var ipEndPoint = new IPEndPoint(IPAddress.Any, 4999);
             _tcpServer.Start(ipEndPoint);
@@ -27,7 +28,9 @@ namespace CarControl.CarConnect.Server
 
         private void ClientConnected(object sender, AsyncCarClientToken e)
         {
-            var cp = new TextAuthProto(e, _commandFactory, _nextId++, -1, _carService);
+            if (GetInputCommandFactory == null) return;
+            var commandFactory = GetInputCommandFactory();
+            var cp = new TextAuthProto(e, commandFactory, _nextId++, -1, _carService);
             e.Proto = cp;
             _cars.Add(cp);
         }
@@ -35,6 +38,7 @@ namespace CarControl.CarConnect.Server
         private void ClientDisconnected(object sender, AsyncCarClientToken e)
         {
             _cars.Remove(e.Proto);
+            OnClientDisconnected?.Invoke();
         }
 
         public IEnumerable<ICarProtocol> GetConnections()

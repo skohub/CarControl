@@ -12,7 +12,7 @@ namespace CarConnect.Data.Infrastructure
 
         protected override void DisposeCore()
         {
-            if (_dbContext != null) _dbContext.Dispose();
+            _dbContext?.Dispose();
         }
 
         public StoreEntities Init()
