@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarConnect.Model
 {
@@ -12,5 +9,13 @@ namespace CarConnect.Model
         public string Name { get; set; }
         public string Imei { get; set; }
         public string Hash { get; set; }
+
+        public FloatSensorValue Temp1
+        {
+            get { return FloatSensorValues.LastOrDefault(c => c.SensorName == "TEMP1"); }
+            set { FloatSensorValues.Add(value); }
+        }
+
+        public virtual List<FloatSensorValue> FloatSensorValues { get; set; }
     }
 }
