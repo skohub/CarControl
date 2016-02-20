@@ -7,17 +7,17 @@ namespace CarControl.CarConnect.InputCommands
 {
     public class GpsCommand : IInputCommand
     {
+        private readonly ICarService _carService;
         private readonly int _carId;
-        private readonly ISensorService _sensorService;
         private readonly double _latitude;
         private readonly double _longitude;
         private readonly DateTime _time;
 
-        public GpsCommand(int carId, ISensorService sensorService, double latitude, double longitude,
+        public GpsCommand(ICarService carService, int carId, double latitude, double longitude,
             DateTime time)
         {
+            _carService = carService;
             _carId = carId;
-            _sensorService = sensorService;
             _latitude = latitude;
             _longitude = longitude;
             _time = time;
@@ -32,7 +32,8 @@ namespace CarControl.CarConnect.InputCommands
                 Longitude = _longitude,
                 Time = _time
             };
-            _sensorService.RegisterLocation(location);
+            _carService.GetCar(_carId).GpsLocations.Add(location);
+            _carService.SaveCar();
         }
     }
 }

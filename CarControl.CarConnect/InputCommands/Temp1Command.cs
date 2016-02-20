@@ -7,14 +7,14 @@ namespace CarControl.CarConnect.InputCommands
 {
     public class Temp1Command : IInputCommand
     {
-        private readonly ISensorService _sensorService;
+        private readonly ICarService _carService;
         private readonly int _carId;
         private readonly float _temperature;
         private readonly DateTime _time;
 
-        public Temp1Command(ISensorService sensorService, int carId, float temperature, DateTime time)
+        public Temp1Command(ICarService carService, int carId, float temperature, DateTime time)
         {
-            _sensorService = sensorService;
+            _carService = carService;
             _carId = carId;
             _temperature = temperature;
             _time = time;
@@ -22,8 +22,10 @@ namespace CarControl.CarConnect.InputCommands
 
         public void Execute()
         {
-            var value = new FloatSensorValue {SensorName = "TEMP1", CarId = _carId, Time = _time, Value = _temperature};
-            _sensorService.RegisterValue(value);
+            var car = _carService.GetCar(_carId);
+            var value = new FloatSensorValue { SensorName = "TEMP1", Time = _time, Value = _temperature };
+            car.FloatSensorValues.Add(value);
+            _carService.SaveCar();
         }
     }
 }

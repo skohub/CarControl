@@ -10,12 +10,9 @@ namespace CarConnect.Model
         public string Imei { get; set; }
         public string Hash { get; set; }
 
-        public FloatSensorValue Temp1
-        {
-            get { return FloatSensorValues.LastOrDefault(c => c.SensorName == "TEMP1"); }
-            set { FloatSensorValues.Add(value); }
-        }
-
         public virtual List<FloatSensorValue> FloatSensorValues { get; set; }
+        public virtual List<GpsLocation> GpsLocations { get; set; }
+        public virtual List<GSensor> GSensors { get; set; }
+        public virtual List<Sms> Smses { get; set; } 
     }
 }

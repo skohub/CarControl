@@ -7,14 +7,14 @@ namespace CarControl.CarConnect.InputCommands
 {
     public class VoltageCommand : IInputCommand
     {
-        private readonly ISensorService _sensorService;
+        private readonly ICarService _carService;
         private readonly int _carId;
         private readonly float _voltage;
         private readonly DateTime _time;
 
-        public VoltageCommand(ISensorService sensorService, int carId, float voltage, DateTime time)
+        public VoltageCommand(ICarService carService, int carId, float voltage, DateTime time)
         {
-            _sensorService = sensorService;
+            _carService = carService;
             _carId = carId;
             _voltage = voltage;
             _time = time;
@@ -23,7 +23,8 @@ namespace CarControl.CarConnect.InputCommands
         public void Execute()
         {
             var value = new FloatSensorValue {SensorName = "VOLTAGE", CarId = _carId, Value = _voltage, Time = _time};
-            _sensorService.RegisterValue(value);
+            _carService.GetCar(_carId).FloatSensorValues.Add(value);
+            _carService.SaveCar();
         }
     }
 }

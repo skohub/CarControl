@@ -10,9 +10,6 @@ namespace CarConnect.Data.Configuration
             ToTable("car");
             Property(g => g.CarId).IsRequired();
             Property(g => g.Name).IsRequired();
-            Ignore(g => g.Temp1);
         }
-        
-
     }
 }

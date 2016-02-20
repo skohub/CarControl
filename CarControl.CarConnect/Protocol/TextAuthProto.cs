@@ -35,8 +35,7 @@ namespace CarControl.CarConnect.Protocol
                 CarTimeGround = DateTime.Now;
                 var minuteOfYear = (int)(CarTimeGround.Subtract(new DateTime(DateTime.Now.Year, 1, 1))).TotalSeconds / 60;
                 var ans = "LOGINOK\r\n" +
-                          "SETTIME: " + minuteOfYear.ToString().PadLeft(6, '0') + "\r\n" +
-                          car.Temp1.Value;
+                          "SETTIME: " + minuteOfYear.ToString().PadLeft(6, '0') + "\r\n";
                 Send(ans);
                 CarId = car.CarId;
                 SetProtocol(new TextProto());

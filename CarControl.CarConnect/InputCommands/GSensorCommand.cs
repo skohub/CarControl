@@ -7,17 +7,17 @@ namespace CarControl.CarConnect.InputCommands
 {
     public class GSensorCommand : IInputCommand
     {
+        private readonly ICarService _carService;
         private readonly int _carId;
-        private readonly ISensorService _sensorService;
         private readonly int _x;
         private readonly int _y;
         private readonly int _z;
         private readonly DateTime _time;
 
-        public GSensorCommand(int carId, ISensorService sensorService, int x, int y, int z, DateTime time)
+        public GSensorCommand(ICarService carService, int carId, int x, int y, int z, DateTime time)
         {
+            _carService = carService;
             _carId = carId;
-            _sensorService = sensorService;
             _x = x;
             _y = y;
             _z = z;
@@ -26,8 +26,9 @@ namespace CarControl.CarConnect.InputCommands
 
         public void Execute()
         {
-            var gsensor = new GSensor() {CarId = _carId, X = _x, Y = _y, Z = _z, Time = _time };
-            _sensorService.RegisterGSensor(gsensor);
+            var gsensor = new GSensor {CarId = _carId, X = _x, Y = _y, Z = _z, Time = _time };
+            _carService.GetCar(_carId).GSensors.Add(gsensor);
+            _carService.SaveCar();
         }
     }
 }

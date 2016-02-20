@@ -70,9 +70,6 @@ namespace CarControl.CarConnect.Protocol
                     Assert(cmd.Length == 3, "SMSOUT awaits 2 param");
                     command = CommandFactory.CreateSmsOut(CarId, cmd[1], ParseMinutes(cmd[2]));
                     break;
-                case "SMSC":
-                    command = CommandFactory.CreateSmsCommit();
-                    break;
                 case "SP":
                     Assert(cmd.Length == 3, "SP awaits 2 param");
                     command = CommandFactory.CreateSpeed(CarId, int.Parse(cmd[1]), ParseMinutes(cmd[2]));
