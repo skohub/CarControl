@@ -1,9 +1,11 @@
 ﻿using Autofac;
+using AutoMapper;
 using CarConnect.Data.Infrastructure;
 using CarConnect.Data.Repositories;
 using CarControl.CarConnect.CommandsCommon;
 using CarControl.CarConnect.Protocol;
 using CarControl.CarConnect.Server;
+using CarControl.ConsoleHost.Mappings;
 using CarControl.Service;
 
 namespace CarControl.ConsoleHost
@@ -33,6 +35,11 @@ namespace CarControl.ConsoleHost
                 .SingleInstance()
                 .AutoActivate();
             builder.RegisterType<CarCommand>();
+            builder.Register(ctx => new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<DomainToDtoMappingProfile>();
+            }));
+            builder.Register(ctx => ctx.Resolve<MapperConfiguration>().CreateMapper()).As<IMapper>();
 
             return builder;
         }

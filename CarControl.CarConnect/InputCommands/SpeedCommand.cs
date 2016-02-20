@@ -22,7 +22,7 @@ namespace CarControl.CarConnect.InputCommands
 
         public void Execute()
         {
-            var value = new FloatSensorValue {SensorName = "SP", CarId = _carId, Value = _speed, Time = _time};
+            var value = new FloatSensorValue {SensorName = "SPEED", CarId = _carId, Value = _speed, Time = _time};
             _carService.GetCar(_carId).FloatSensorValues.Add(value);
             _carService.SaveCar();
         }

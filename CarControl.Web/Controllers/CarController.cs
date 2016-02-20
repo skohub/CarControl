@@ -24,13 +24,13 @@ namespace CarControl.Web.Controllers
         {
             if (!User.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
             var connections = _carCommand.ConnectionList();
-            var viewModelCars = new List<CarViewModel>();
+            var cars = new List<CarDto>();
             foreach (var i in connections)
             {
-                viewModelCars.Add(new CarViewModel {Id = i});
+                cars.Add(_carCommand.GetCar(i));
             }
             //var viewModelCars = Mapper.Map<IEnumerable<ICarProtocol>, IEnumerable<CarViewModel>>(cars);
-            return View(viewModelCars);
+            return View(cars);
         }
 
         public ActionResult Log()

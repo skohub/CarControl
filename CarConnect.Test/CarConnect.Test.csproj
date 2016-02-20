@@ -52,8 +52,6 @@
   <ItemGroup>
     <Compile Include="CarServiceMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FloatSensorServiceMock.cs" />
-    <Compile Include="SmsServiceMock.cs" />
     <Compile Include="TcpConnectionMock.cs" />
     <Compile Include="TextAuthProtoTest.cs" />
   </ItemGroup>

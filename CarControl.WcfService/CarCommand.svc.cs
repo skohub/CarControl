@@ -27,6 +27,11 @@ namespace CarControl.WcfService
             return _carProtoServer.GetConnections().Select(carProtocol => carProtocol.Id).ToList();
         }
 
+        public CarDto GetCar(int carId)
+        {
+            throw new System.NotImplementedException();
+        }
+
         private ICarCommandCallback Callback => OperationContext.Current.GetCallbackChannel<ICarCommandCallback>();
     }
 }

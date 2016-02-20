@@ -17,5 +17,10 @@ namespace CarControl.Web.WcfProxy
         {
             return Channel.ConnectionList();
         }
+
+        public CarDto GetCar(int carId)
+        {
+            return Channel.GetCar(carId);
+        }
     }
 }

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using Autofac;
 using Autofac.Integration.Wcf;
 using CarControl.CarConnect.CommandsCommon;
 using CarControl.CarConnect.Protocol;
-using CarControl.CarConnect.Server;
 using CarControl.Contract;
 
 namespace CarControl.ConsoleHost

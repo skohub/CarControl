@@ -17,15 +17,11 @@ namespace CarControl.CarConnect.CommandsCommon
 
     public class InputCommandFactory : ICommandFactory
     {
-        private readonly ISmsService _smsService;
         public ICarService CarService { get; }
-        public ISensorService SensorService { get; }
         
-        public InputCommandFactory(ICarService carService, ISensorService sensorService, ISmsService smsService)
+        public InputCommandFactory(ICarService carService)
         {
-            _smsService = smsService;
             CarService = carService;
-            SensorService = sensorService;
         }
         
         public IInputCommand CreateTemp1(int carId, float temperature, DateTime time)

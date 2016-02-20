@@ -1,10 +1,11 @@
-﻿@model CarControl.Web.Models.CarViewModel
+﻿@model CarControl.Contract.CarDto
 
 <div>
     <h4>CarViewModel</h4>
-    <h4>Id: @Model.Id</h4>
+    <h4>Id: @Model.CarId</h4>
     <h4>Name: @Model.Name</h4>
-    <p>@Html.ActionLink("Пинг", "Ping", new { id = Model.Id })</p>
+    <h4>Voltage: @Model.Voltage</h4>
+    <p>@Html.ActionLink("Пинг", "Ping", new { id = Model.CarId })</p>
     <hr />
     <dl class="dl-horizontal">
     </dl>

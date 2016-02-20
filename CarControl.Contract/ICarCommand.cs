@@ -15,6 +15,9 @@ namespace CarControl.Contract
 
         [OperationContract]
         List<int> ConnectionList();
+
+        [OperationContract]
+        CarDto GetCar(int carId);
     }
 
     public interface ICarCommandCallback

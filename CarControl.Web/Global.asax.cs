@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using CarControl.Web.Mappings;
 
 namespace CarControl.Web
 {
@@ -14,7 +13,6 @@ namespace CarControl.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.ConfigureContainer();
-            AutomapperConfig.Configure();
         }
     }
 }
