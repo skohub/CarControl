@@ -63,3 +63,4 @@ CarControl.Web/ConnectionStrings.config
 CarControl.ConsoleHost/ConnectionStrings.config
 CarControl.WcfService/ConnectionStrings.config
 *.ldf
+*.mdf

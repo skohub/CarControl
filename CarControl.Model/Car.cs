@@ -14,9 +14,9 @@ namespace CarConnect.Model
         public float Voltage { get { return FloatSensorValues.LastOrDefault(c => c.SensorName == "VOLTAGE")?.Value ?? 0; } }
         public float Speed { get { return FloatSensorValues.LastOrDefault(c => c.SensorName == "SPEED")?.Value ?? 0; } }
 
-        public virtual List<FloatSensorValue> FloatSensorValues { get; set; }
-        public virtual List<GpsLocation> GpsLocations { get; set; }
-        public virtual List<GSensor> GSensors { get; set; }
-        public virtual List<Sms> Smses { get; set; } 
+        public ICollection<FloatSensorValue> FloatSensorValues { get; set; }
+        public ICollection<GpsLocation> GpsLocations { get; set; }
+        public ICollection<GSensor> GSensors { get; set; }
+        public ICollection<Sms> Smses { get; set; } 
     }
 }
