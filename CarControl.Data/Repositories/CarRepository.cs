@@ -19,7 +19,8 @@ namespace CarConnect.Data.Repositories
 
         public Car GetCarByImei(string imei)
         {
-            var car = DbContext.Cars.FirstOrDefault(c => c.Imei == imei);
+            var car = DbContext.Cars.Local.FirstOrDefault(c => c.Imei == imei) ??
+                      DbContext.Cars.FirstOrDefault(c => c.Imei == imei);
             return car;
         }
     }

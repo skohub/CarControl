@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.Web", "CarContro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.CarConnect", "CarControl.CarConnect\CarControl.CarConnect.csproj", "{FDB09674-3C2D-4A1B-B8AB-2C367BD83EDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarConnect.Model", "CarConnect.Model\CarConnect.Model.csproj", "{019F7905-21E2-4234-A239-4CF5F521EE3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.Model", "CarControl.Model\CarControl.Model.csproj", "{019F7905-21E2-4234-A239-4CF5F521EE3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarConnect.Data", "CarConnect.Data\CarConnect.Data.csproj", "{093EB620-6A61-4AA4-8F44-6851E860A319}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.Data", "CarControl.Data\CarControl.Data.csproj", "{093EB620-6A61-4AA4-8F44-6851E860A319}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.Service", "CarControl.Service\CarControl.Service.csproj", "{AB8F253F-BAFD-4489-B420-DA0DB731C329}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarConnect.Test", "CarConnect.Test\CarConnect.Test.csproj", "{0D23439D-6A4F-487F-98F7-C5CE23454A1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.Test", "CarControl.Test\CarControl.Test.csproj", "{0D23439D-6A4F-487F-98F7-C5CE23454A1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarControl.Contract", "CarControl.Contract\CarControl.Contract.csproj", "{205FF8B9-E412-4A8A-9F7C-A8B0B224591F}"
 EndProject

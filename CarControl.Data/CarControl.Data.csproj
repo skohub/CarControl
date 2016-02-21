@@ -70,9 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarConnect.Model\CarConnect.Model.csproj">
+    <ProjectReference Include="..\CarControl.Model\CarControl.Model.csproj">
       <Project>{019f7905-21e2-4234-a239-4cf5f521ee3e}</Project>
-      <Name>CarConnect.Model</Name>
+      <Name>CarControl.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

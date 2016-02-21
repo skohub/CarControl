@@ -56,13 +56,13 @@
     <Compile Include="TextAuthProtoTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarConnect.Data\CarConnect.Data.csproj">
+    <ProjectReference Include="..\CarControl.Data\CarControl.Data.csproj">
       <Project>{093eb620-6a61-4aa4-8f44-6851e860a319}</Project>
-      <Name>CarConnect.Data</Name>
+      <Name>CarControl.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarConnect.Model\CarConnect.Model.csproj">
+    <ProjectReference Include="..\CarControl.Model\CarControl.Model.csproj">
       <Project>{019F7905-21E2-4234-A239-4CF5F521EE3E}</Project>
-      <Name>CarConnect.Model</Name>
+      <Name>CarControl.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarControl.CarConnect\CarControl.CarConnect.csproj">
       <Project>{fdb09674-3c2d-4a1b-b8ab-2c367bd83edc}</Project>

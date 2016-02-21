@@ -68,9 +68,9 @@
     <Compile Include="Protocol\TextProto.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarConnect.Model\CarConnect.Model.csproj">
+    <ProjectReference Include="..\CarControl.Model\CarControl.Model.csproj">
       <Project>{019F7905-21E2-4234-A239-4CF5F521EE3E}</Project>
-      <Name>CarConnect.Model</Name>
+      <Name>CarControl.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarControl.Contract\CarControl.Contract.csproj">
       <Project>{205FF8B9-E412-4A8A-9F7C-A8B0B224591F}</Project>

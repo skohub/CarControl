@@ -90,13 +90,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarConnect.Data\CarConnect.Data.csproj">
+    <ProjectReference Include="..\CarControl.Data\CarControl.Data.csproj">
       <Project>{093EB620-6A61-4AA4-8F44-6851E860A319}</Project>
-      <Name>CarConnect.Data</Name>
+      <Name>CarControl.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarConnect.Model\CarConnect.Model.csproj">
+    <ProjectReference Include="..\CarControl.Model\CarControl.Model.csproj">
       <Project>{019F7905-21E2-4234-A239-4CF5F521EE3E}</Project>
-      <Name>CarConnect.Model</Name>
+      <Name>CarControl.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarControl.CarConnect\CarControl.CarConnect.csproj">
       <Project>{FDB09674-3C2D-4A1B-B8AB-2C367BD83EDC}</Project>
