@@ -64,3 +64,4 @@ CarControl.ConsoleHost/ConnectionStrings.config
 CarControl.WcfService/ConnectionStrings.config
 *.ldf
 *.mdf
+*.mdf

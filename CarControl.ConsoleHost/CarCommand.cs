@@ -34,8 +34,9 @@ namespace CarControl.ConsoleHost
             return _carProtoServer.GetConnections().Select(carProtocol => carProtocol.Id).ToList();
         }
 
-        public CarDto GetCar(int carId)
+        public CarDto GetCar(int connectionId)
         {
+            var carId = _carProtoServer.GetConnection(connectionId).CarId;
             var car = _carService.GetCar(carId);
             return _mapper.Map<Car, CarDto>(car);
         }

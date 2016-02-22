@@ -21,25 +21,37 @@ namespace CarConnect.Data.Repositories
         public new Car GetById(int id)
         {
             var car = base.GetById(id);
-            DbContext.Entry(car)
-                .Collection(b => b.FloatSensorValues)
-                .Query()
-                .OrderByDescending(b => b.Id)
-                .Take(10)
-                .Load();
+            PopulateSensorValues(car);
             return car;
         }
 
         public Car GetCarByImei(string imei)
         {
             var car = DbContext.Cars.FirstOrDefault(c => c.Imei == imei);
+            PopulateSensorValues(car);
+            return car;
+        }
+
+        private void PopulateSensorValues(Car car)
+        {
             DbContext.Entry(car)
                 .Collection(b => b.FloatSensorValues)
                 .Query()
                 .OrderByDescending(b => b.Id)
                 .Take(10)
                 .Load();
-            return car;
+            DbContext.Entry(car)
+                .Collection(b => b.GSensors)
+                .Query()
+                .OrderByDescending(b => b.Id)
+                .Take(10)
+                .Load();
+            DbContext.Entry(car)
+                .Collection(b => b.GpsLocations)
+                .Query()
+                .OrderByDescending(b => b.Id)
+                .Take(10)
+                .Load();
         }
     }
 }

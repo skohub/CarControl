@@ -14,20 +14,22 @@ namespace CarControl.CarConnect.Protocol
         public static string WrongAction = "Action unknown";
 
         private bool _initilized;
-
-        protected int CarId;
+        
         protected ICommandFactory CommandFactory;
         protected ITcpConnection Connection;
-        protected DateTime CarTimeGround; // минуты машины передаются относительно этого времени
-        
+
+        public int CarId { get; set; }
         public int Id { get; protected set; }
 
         public BaseCarProtocol(ITcpConnection connection, ICommandFactory commandFactory, int id, int carId)
         {
-            Init(connection, commandFactory, id, DateTime.MinValue, carId);
+            Init(connection, commandFactory, id, carId);
         }
 
-        public BaseCarProtocol() { }
+        public BaseCarProtocol()
+        {
+            
+        }
 
         public virtual void Receive(byte[] bufBytes)
         {
@@ -44,20 +46,19 @@ namespace CarControl.CarConnect.Protocol
             throw new NotImplementedException();
         }
 
-        public void Init(ITcpConnection connection, ICommandFactory commandFactory, int id, DateTime carTimeGround, int carId)
+        public void Init(ITcpConnection connection, ICommandFactory commandFactory, int id, int carId)
         {
             Connection = connection;
             Id = id;
             CarId = carId;
             CommandFactory = commandFactory;
-            CarTimeGround = carTimeGround;
             _initilized = true;
         }
 
         public void SetProtocol(ICarProtocol protocol)
         {
             if (!_initilized) throw new InvalidOperationException();
-            protocol.Init(Connection, CommandFactory, Id, CarTimeGround, CarId);
+            protocol.Init(Connection, CommandFactory, Id, CarId);
             Connection.SetProtocol(protocol);
         }
 

@@ -19,24 +19,24 @@ namespace CarControl.CarConnect.Protocol
 
         public override void Receive(byte[] bufBytes)
         {
-            for (int i = 0; i < bufBytes.Length; i++)
+            for (var i = 0; i < bufBytes.Length; i++)
             {
                 switch (bufBytes[i])
                 {
                     case 13:
                         break;
                     case 10:
-                        //try
+                        try
                         {
                             CommandReceived(_cmd.ToString());
                         }
-                        //catch (InvalidOperationException)
-                        //{
-                        //}
-                        //catch (Exception e)
-                        //{
-                        //    Send(e.GetType().Name);
-                        //}
+                        catch (InvalidOperationException)
+                        {
+                        }
+                        catch (Exception e)
+                        {
+                            Send(e.GetType().Name);
+                        }
                         _cmd.Clear();
                         break;
                     default:
@@ -49,7 +49,7 @@ namespace CarControl.CarConnect.Protocol
         public override void Send(string cmd)
         {
             cmd += "\r\n";
-            Send(Encoding.UTF8.GetBytes(cmd));
+            base.Send(Encoding.UTF8.GetBytes(cmd));
         }
 
         public virtual void CommandReceived(string cmd)
