@@ -11,10 +11,16 @@ namespace CarControl.Contract
     public interface ICarCommand
     {
         [OperationContract(IsOneWay = true)]
-        void Ping(int carId);
+        void Ping(int connectionId);
+
+        [OperationContract(IsOneWay = true)]
+        void Start(int connectionId);
 
         [OperationContract]
         List<int> ConnectionList();
+
+        [OperationContract]
+        List<CarDto> ConnectedCars();
 
         [OperationContract]
         CarDto GetCar(int carId);

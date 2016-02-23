@@ -4,9 +4,7 @@ using System.ServiceModel;
 using AutoMapper;
 using CarConnect.Model;
 using CarControl.CarConnect.Protocol;
-using CarControl.CarConnect.Server;
 using CarControl.Contract;
-using CarControl.Service;
 
 namespace CarControl.ConsoleHost
 {
@@ -15,18 +13,21 @@ namespace CarControl.ConsoleHost
     {
         private readonly IMapper _mapper;
         private readonly ICarProtoServer _carProtoServer;
-        private readonly ICarService _carService;
 
-        public CarCommand(IMapper mapper, ICarProtoServer carProtoServer, ICarService carService)
+        public CarCommand(IMapper mapper, ICarProtoServer carProtoServer)
         {
             _mapper = mapper;
             _carProtoServer = carProtoServer;
-            _carService = carService;
         }
 
-        public void Ping(int carId)
+        public void Ping(int connectionId)
         {
-            _carProtoServer.GetConnection(carId).Send("PING");
+            _carProtoServer.GetConnection(connectionId).Send("PING");
+        }
+
+        public void Start(int connectionId)
+        {
+            _carProtoServer.GetConnection(connectionId).Send("START");
         }
 
         public List<int> ConnectionList()
@@ -34,10 +35,22 @@ namespace CarControl.ConsoleHost
             return _carProtoServer.GetConnections().Select(carProtocol => carProtocol.Id).ToList();
         }
 
+        public List<CarDto> ConnectedCars()
+        {
+            var cars = new List<CarDto>();
+            foreach (var carProtocol in _carProtoServer.GetConnections())
+            {
+                var car = _mapper.Map<Car, CarDto>(carProtocol.Car);
+                if (car == null) continue;
+                car.ConnectionId = carProtocol.Id;
+                cars.Add(car);
+            }
+            return cars;
+        }
+
         public CarDto GetCar(int connectionId)
         {
-            var carId = _carProtoServer.GetConnection(connectionId).CarId;
-            var car = _carService.GetCar(carId);
+            var car = _carProtoServer.GetConnection(connectionId).Car;
             return _mapper.Map<Car, CarDto>(car);
         }
 

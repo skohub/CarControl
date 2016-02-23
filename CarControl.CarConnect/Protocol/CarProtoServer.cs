@@ -30,7 +30,7 @@ namespace CarControl.CarConnect.Protocol
         {
             if (GetInputCommandFactory == null) return;
             var commandFactory = GetInputCommandFactory();
-            var cp = new TextAuthProto(e, commandFactory, _nextId++, -1, _carService);
+            var cp = new TextAuthProto(e, commandFactory, _nextId++, _carService);
             e.Proto = cp;
             _cars.Add(cp);
         }

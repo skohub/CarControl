@@ -10,8 +10,8 @@ namespace CarControl.CarConnect.Protocol
     {
         private readonly ICarService _carService;
 
-        public TextAuthProto(ITcpConnection connection, ICommandFactory commandFactory, int id, int carId,
-            ICarService carService1) : base(connection, commandFactory, id, carId)
+        public TextAuthProto(ITcpConnection connection, ICommandFactory commandFactory, int id, 
+            ICarService carService1) : base(connection, commandFactory, id)
         {
             _carService = carService1;
         }
@@ -36,7 +36,7 @@ namespace CarControl.CarConnect.Protocol
                 var ans = "LOGINOK\r\n" +
                           "SETTIME: " + minuteOfYear.ToString().PadLeft(6, '0') + "\r\n";
                 Send(ans);
-                CarId = car.CarId;
+                Car = car;
                 SetProtocol(new TextProto());
             }
             else

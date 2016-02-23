@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using CarConnect.Model;
 using CarControl.CarConnect.CommandsCommon;
 using CarControl.CarConnect.InputCommands;
 using CarControl.CarConnect.Server;
@@ -10,8 +11,8 @@ namespace CarControl.CarConnect.Protocol
     {
         private readonly StringBuilder _cmd = new StringBuilder();
 
-        public BaseTextProto(ITcpConnection connection, ICommandFactory commandFactory, int id, int carId)
-            : base(connection, commandFactory, id, carId)
+        public BaseTextProto(ITcpConnection connection, ICommandFactory commandFactory, int id)
+            : base(connection, commandFactory, id)
         {
         }
 

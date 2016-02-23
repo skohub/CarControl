@@ -1,4 +1,5 @@
 ﻿using System;
+using CarConnect.Model;
 using CarControl.CarConnect.CommandsCommon;
 using CarControl.CarConnect.InputCommands;
 using CarControl.CarConnect.Server;
@@ -18,12 +19,12 @@ namespace CarControl.CarConnect.Protocol
         protected ICommandFactory CommandFactory;
         protected ITcpConnection Connection;
 
-        public int CarId { get; set; }
+        public Car Car { get; set; }
         public int Id { get; protected set; }
 
-        public BaseCarProtocol(ITcpConnection connection, ICommandFactory commandFactory, int id, int carId)
+        public BaseCarProtocol(ITcpConnection connection, ICommandFactory commandFactory, int id)
         {
-            Init(connection, commandFactory, id, carId);
+            Init(connection, commandFactory, id, null);
         }
 
         public BaseCarProtocol()
@@ -46,11 +47,11 @@ namespace CarControl.CarConnect.Protocol
             throw new NotImplementedException();
         }
 
-        public void Init(ITcpConnection connection, ICommandFactory commandFactory, int id, int carId)
+        public void Init(ITcpConnection connection, ICommandFactory commandFactory, int id, Car car)
         {
             Connection = connection;
             Id = id;
-            CarId = carId;
+            Car = car;
             CommandFactory = commandFactory;
             _initilized = true;
         }
@@ -58,7 +59,7 @@ namespace CarControl.CarConnect.Protocol
         public void SetProtocol(ICarProtocol protocol)
         {
             if (!_initilized) throw new InvalidOperationException();
-            protocol.Init(Connection, CommandFactory, Id, CarId);
+            protocol.Init(Connection, CommandFactory, Id, Car);
             Connection.SetProtocol(protocol);
         }
 
