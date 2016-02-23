@@ -17,7 +17,7 @@ namespace CarConnect.Test
             var tcpConnectionMock = new TcpConnectionMock();
             var carServiceMock = new CarServiceMock();
             var commandFactory = new InputCommandFactory(carServiceMock);
-            var authProto = new TextAuthProto(tcpConnectionMock, commandFactory, 1, 1, carServiceMock);
+            var authProto = new TextAuthProto(tcpConnectionMock, commandFactory, 1, carServiceMock);
             authProto.Receive(Encoding.UTF8.GetBytes("123456789012345:123\r\n"));
             var expect = Encoding.UTF8.GetBytes("LOGINOK\r\n");
             Assert.IsTrue(tcpConnectionMock.LastSentBuf.Length > 8);
@@ -32,7 +32,7 @@ namespace CarConnect.Test
             var tcpConnectionMock = new TcpConnectionMock();
             var carServiceMock = new CarServiceMock();
             var commandFactory = new InputCommandFactory(carServiceMock);
-            var authProto = new TextAuthProto(tcpConnectionMock, commandFactory, 1, 1, new CarServiceMock());
+            var authProto = new TextAuthProto(tcpConnectionMock, commandFactory, 1, new CarServiceMock());
             authProto.Receive(Encoding.UTF8.GetBytes("123456789012345:12\r\n"));
             var expect = Encoding.UTF8.GetBytes("LOGINFAIL\r\n");
             CollectionAssert.AreEqual(tcpConnectionMock.LastSentBuf, expect);

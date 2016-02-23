@@ -23,13 +23,7 @@ namespace CarControl.Web.Controllers
         public ActionResult Index()
         {
             if (!User.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
-            var connections = _carCommand.ConnectionList();
-            var cars = new List<CarDto>();
-            foreach (var i in connections)
-            {
-                cars.Add(_carCommand.GetCar(i));
-            }
-            //var viewModelCars = Mapper.Map<IEnumerable<ICarProtocol>, IEnumerable<CarViewModel>>(cars);
+            var cars = _carCommand.ConnectedCars();
             return View(cars);
         }
 
@@ -44,7 +38,14 @@ namespace CarControl.Web.Controllers
         public ActionResult Ping(int id)
         {
             if (!User.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
-            _carCommand.Ping(1);
+            _carCommand.Ping(id);
+            return View();
+        }
+
+        public ActionResult Start(int id)
+        {
+            if (!User.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
+            _carCommand.Start(id);
             return View();
         }
     }

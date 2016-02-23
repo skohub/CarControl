@@ -8,14 +8,24 @@ namespace CarControl.Web.WcfProxy
     {
         public CarCommandProxy(InstanceContext callbackInstance) : base(callbackInstance) { }
 
-        public void Ping(int id)
+        public void Ping(int connectionId)
         {
-            Channel.Ping(id);
+            Channel.Ping(connectionId);
+        }
+
+        public void Start(int connectionId)
+        {
+            Channel.Start(connectionId);
         }
 
         public List<int> ConnectionList()
         {
             return Channel.ConnectionList();
+        }
+
+        public List<CarDto> ConnectedCars()
+        {
+            return Channel.ConnectedCars();
         }
 
         public CarDto GetCar(int carId)

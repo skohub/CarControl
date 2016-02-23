@@ -14,8 +14,8 @@
                 <h4><font color="#888888">Текущая скорость:</font> @Model.Speed км/ч</h4>
                 <h4><font color="#888888">Температура:</font> @Model.Temp1 °C</h4>
                 <p>
-                    @Html.ActionLink("Пингануть", "Ping", new {id = Model.CarId})
-                    @Html.ActionLink("| Завести", "Ping", new { id = Model.CarId })
+                    @Html.ActionLink("Пингануть", "Ping", new {id = Model.ConnectionId})
+                    @Html.ActionLink("| Завести", "Start", new { id = Model.ConnectionId })
                 </p>
             </div>
             <div style="clear:both"></div>
