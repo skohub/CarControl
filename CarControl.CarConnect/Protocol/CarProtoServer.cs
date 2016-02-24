@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using CarControl.CarConnect.CommandsCommon;
 using CarControl.CarConnect.Server;
@@ -12,7 +13,7 @@ namespace CarControl.CarConnect.Protocol
         private readonly ICarService _carService;
         private readonly TcpServer _tcpServer;
         private int _nextId = 1;
-        private readonly List<ICarProtocol> _cars = new List<ICarProtocol>();
+        private readonly Dictionary<int, ICarProtocol> _cars = new Dictionary<int, ICarProtocol>();
         public Func<ICommandFactory> GetInputCommandFactory { get; set; }
         public Action OnClientDisconnected { get; set; }
 
@@ -32,23 +33,23 @@ namespace CarControl.CarConnect.Protocol
             var commandFactory = GetInputCommandFactory();
             var cp = new TextAuthProto(e, commandFactory, _nextId++, _carService);
             e.Proto = cp;
-            _cars.Add(cp);
+            _cars.Add(cp.Id, cp);
         }
 
         private void ClientDisconnected(object sender, AsyncCarClientToken e)
         {
-            _cars.Remove(e.Proto);
+            _cars.Remove(e.Proto.Id);
             OnClientDisconnected?.Invoke();
         }
 
         public IEnumerable<ICarProtocol> GetConnections()
         {
-            return _cars;
+            return _cars.Values;
         }
 
         public ICarProtocol GetConnection(int id)
         {
-            return _cars.Find(p => p.Id == id);
+            return _cars.Values.ToList().Find(p => p.Id == id);
         }
 
         protected override void DisposeCore()
