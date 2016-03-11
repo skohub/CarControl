@@ -12,6 +12,7 @@ namespace CarControl.Contract
         public float Temp1 { get; set; }
         public float Speed { get; set; }
         public float Voltage { get; set; }
+        public string IpAddress { get; set; }
         //public List<double> GpsCoordinates { get; set; }
         //public List<double> GSensorValues { get; set; }
     }

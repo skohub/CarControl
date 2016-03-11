@@ -1,4 +1,5 @@
-﻿using CarControl.CarConnect.Protocol;
+﻿using System.Net.Sockets;
+using CarControl.CarConnect.Protocol;
 using CarControl.CarConnect.Server;
 
 namespace CarConnect.Test
@@ -13,6 +14,8 @@ namespace CarConnect.Test
             Closed = true;
         }
 
+        public Socket Socket { get; }
+
         public void Send(byte[] bufBytes)
         {
             LastSentBuf = bufBytes;
@@ -21,6 +24,11 @@ namespace CarConnect.Test
         public void SetProtocol(ICarProtocol proto)
         {
 
+        }
+
+        public TcpConnectionMock()
+        {
+            Socket = null;
         }
     }
 }

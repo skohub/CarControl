@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Sockets;
 using CarConnect.Model;
 using CarControl.CarConnect.CommandsCommon;
 using CarControl.CarConnect.InputCommands;
@@ -10,6 +11,7 @@ namespace CarControl.CarConnect.Protocol
     {
         int Id { get; }
         Car Car { get; }
+        ITcpConnection Connection { get; }
         void Receive(byte[] bufBytes);
         void Send(byte[] bufBytes);
         void Send(string cmd);

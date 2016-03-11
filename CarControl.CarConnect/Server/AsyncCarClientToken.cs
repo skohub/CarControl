@@ -45,5 +45,6 @@ namespace CarControl.CarConnect.Server
         {
             Proto = proto;
         }
+
     }
 }

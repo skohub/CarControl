@@ -42,6 +42,7 @@ namespace CarControl.ConsoleHost
             {
                 var car = _mapper.Map<Car, CarDto>(carProtocol.Car);
                 if (car == null) continue;
+                car.IpAddress = carProtocol.Connection.Socket.RemoteEndPoint.ToString();
                 car.ConnectionId = carProtocol.Id;
                 cars.Add(car);
             }

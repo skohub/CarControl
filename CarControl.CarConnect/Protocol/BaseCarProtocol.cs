@@ -15,10 +15,9 @@ namespace CarControl.CarConnect.Protocol
         public static string WrongAction = "Action unknown";
 
         private bool _initilized;
-        
         protected ICommandFactory CommandFactory;
-        protected ITcpConnection Connection;
 
+        public ITcpConnection Connection { get; set; }
         public Car Car { get; set; }
         public int Id { get; protected set; }
 
